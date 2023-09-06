@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { Sequelize } = require('sequelize')
-const {DB_USER, DB_PASSWORD, DB_HOST} = process.env
+const {DB_USER, DB_PASSWORD, DB_HOST,DATABASE_URL} = process.env
 const BusinessModel = require('./models/Business')
 const RolModel = require('./models/Rol')
 const UserModel = require('./models/User')
@@ -8,7 +8,7 @@ const SuperuserModel = require('./models/Superuser')
 
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/db_whatacart`,{logging:false, native: false})
 // postgres://fl0user:FN3gLZ9Prvmq@ep-green-pine-55017894.us-east-2.aws.neon.tech:5432/whatacart-db?sslmode=require
-const sequelize = new Sequelize(`postgres://fl0user:FN3gLZ9Prvmq@ep-green-pine-55017894.us-east-2.aws.neon.tech:5432/whatacart-db?sslmode=require`)
+const sequelize = new Sequelize(DATABASE_URL)
 
 BusinessModel(sequelize)
 RolModel(sequelize)
