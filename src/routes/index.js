@@ -12,7 +12,8 @@ const userUpdated = require("../routes/User/UserUpdate");
 const userSearch = require('../routes/User/UserSearch')
 const createUser = require('./User/UserPost')
 const userDelete = require('./User/UserDelete')
-const messageWebHook = require('./Message/messageWebHook')
+const login = require('./Login/loginRoute')
+const validate = require('./userValidation/userValidation')
 
 const routes = Router();
 
@@ -28,7 +29,8 @@ routes.use("/", businessDelete);
 routes.use("/", createUser);
 routes.use("/", userSearch);
 routes.use("/", userUpdated);
-routes.use("/", userDelete);
-routes.use("/", messageWebHook);
+routes.use("/", userDelete)
+routes.use("/", login);
+routes.use("/",validate)
 
 module.exports = routes;
