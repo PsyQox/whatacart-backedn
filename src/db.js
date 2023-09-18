@@ -14,6 +14,8 @@ const sequelize = new Sequelize(DATABASE_URL,{dialect:"postgres",logging:false})
 BusinessModel(sequelize)
 UserModel(sequelize)
 SuperuserModel(sequelize)
+MsgReceivedModel(sequelize); // Validate with type: 'message'
+MsgSendModel(sequelize); //Validate with type: 'message-event' & typeofpayload: 'sent'
 
 //Associations
 
