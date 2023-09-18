@@ -19,6 +19,14 @@ module.exports = (sequelize) =>{
         email:{
             type: DataTypes.STRING,
             allowNull: false
+        },
+        apiKey:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
+        srcName:{
+            type:DataTypes.STRING,
+            allowNull:false
         }
     }, {timestamps: false});
 }

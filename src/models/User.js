@@ -27,6 +27,9 @@ module.exports = (sequelize) =>{
         privilege:{
             type: DataTypes.ENUM('Admin','Member'),
             allowNull: false,
+        },
+        socketId:{
+            type:DataTypes.STRING
         }
     }, {timestamps: false});
 }
