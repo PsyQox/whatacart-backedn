@@ -2,7 +2,6 @@ require('dotenv').config()
 const { Sequelize } = require('sequelize')
 const {DB_USER, DB_PASSWORD, DB_HOST,DATABASE_URL} = process.env
 const BusinessModel = require('./models/Business')
-const RolModel = require('./models/Rol')
 const UserModel = require('./models/User')
 const SuperuserModel = require('./models/Superuser')
 
@@ -11,7 +10,6 @@ const SuperuserModel = require('./models/Superuser')
 const sequelize = new Sequelize(DATABASE_URL,{dialect:"postgres",logging:false})
 
 BusinessModel(sequelize)
-RolModel(sequelize)
 UserModel(sequelize)
 SuperuserModel(sequelize)
 
@@ -28,17 +26,11 @@ User.belongsTo(Business)
 Business.hasMany(User)
 
 
-Rol.belongsTo(Business)
-Business.hasMany(Rol)
 
-//Third: User belongs to many Rol, and Rol belongs to many User, N:M, Mid table
-User.belongsToMany(Rol, { through: 'user_rol', timestamps: false})
-Rol.belongsToMany(User, { through: 'user_rol', timestamps: false})
 
 module.exports={
     User,
     Business,
-    Rol,
     Superuser,
     conn: sequelize,
 }
