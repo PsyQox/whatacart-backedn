@@ -19,6 +19,9 @@ module.exports = (sequelize)=>{
         notification:{
             type: DataTypes.BOOLEAN,
             defaultValue: false
+        },
+        color:{
+            type:DataTypes.STRING
         }
     },{timestamps:false})
 }

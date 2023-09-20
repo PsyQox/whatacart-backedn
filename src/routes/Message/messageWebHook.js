@@ -30,8 +30,16 @@ module.exports = (io)=>{
                             });
                     })
                 }
-        
-                const [newContact, created] = await Contacts.findOrCreate({where:{phone:payload.source, BusinessId:business.id}, defaults:{name:payload.sender.name, notification:true}})
+                function generarColorAleatorio() {
+                    var r = Math.floor(Math.random() * 256); 
+                    var g = Math.floor(Math.random() * 256); 
+                    var b = Math.floor(Math.random() * 256); 
+                  
+                    var color = "rgb(" + r + "," + g + "," + b + ")";
+                  
+                    return color;
+                }
+                const [newContact, created] = await Contacts.findOrCreate({where:{phone:payload.source, BusinessId:business.id}, defaults:{name:payload.sender.name, notification:true, color:generarColorAleatorio()}})
                 await MsgReceived.create({name: payload.sender.name, phone:payload.source, payload: payload,timestamp:timestamp, BusinessId: business.id, ContactId: newContact.id})
             }
         }
