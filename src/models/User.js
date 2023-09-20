@@ -21,8 +21,7 @@ module.exports = (sequelize) =>{
             allowNull: false
         },
         phone:{
-            type: DataTypes.BIGINT,
-            allowNull:false
+            type: DataTypes.BIGINT
         },
         privilege:{
             type: DataTypes.ENUM('Admin','Member'),
